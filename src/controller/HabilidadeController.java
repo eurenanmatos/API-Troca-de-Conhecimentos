@@ -1,25 +1,38 @@
 package controller;
 
 import model.Habilidade;
-import repository.HabilidadeRepository;
+import service.HabilidadeService;
+
 import java.util.List;
 
 public class HabilidadeController {
-    private final HabilidadeRepository habilidadeRepository;
+    private final HabilidadeService habilidadeService;
 
-    public HabilidadeController(HabilidadeRepository habilidadeRepository) {
-        this.habilidadeRepository = habilidadeRepository;
+    public HabilidadeController(HabilidadeService habilidadeService) {
+        this.habilidadeService = habilidadeService;
     }
 
     public Habilidade criarHabilidade(Habilidade habilidade) {
-        return habilidadeRepository.save(habilidade);
+        return habilidadeService.criar(habilidade);
     }
 
     public Habilidade buscarPorId(Long id) {
-        return habilidadeRepository.findById(id);
+        return habilidadeService.buscarPorId(id);
+    }
+
+    public Habilidade buscarPorNome(String nome) {
+        return habilidadeService.buscarPorNome(nome);
     }
 
     public List<Habilidade> listarHabilidades() {
-        return habilidadeRepository.findAll();
+        return habilidadeService.listarTodas();
+    }
+
+    public Habilidade atualizarHabilidade(Long id, Habilidade dadosNovos) {
+        return habilidadeService.atualizar(id, dadosNovos);
+    }
+
+    public boolean deletarHabilidade(Long id) {
+        return habilidadeService.deletar(id);
     }
 }

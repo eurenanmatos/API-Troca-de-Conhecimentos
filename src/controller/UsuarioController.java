@@ -1,25 +1,38 @@
 package controller;
 
 import model.Usuario;
-import repository.UsuarioRepository;
+import service.UsuarioService;
+
 import java.util.List;
 
 public class UsuarioController {
-    private final UsuarioRepository usuarioRepository;
+    private final UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
+    public UsuarioController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
     }
 
     public Usuario criarUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+        return usuarioService.criar(usuario);
     }
 
     public Usuario buscarPorId(Long id) {
-        return usuarioRepository.findById(id);
+        return usuarioService.buscarPorId(id);
     }
 
     public List<Usuario> listarUsuarios() {
-        return usuarioRepository.findAll();
+        return usuarioService.listarTodos();
+    }
+
+    public Usuario atualizarUsuario(Long id, Usuario dadosNovos) {
+        return usuarioService.atualizar(id, dadosNovos);
+    }
+
+    public boolean deletarUsuario(Long id) {
+        return usuarioService.deletar(id);
+    }
+
+    public String login(String email, String senha) {
+        return usuarioService.login(email, senha);
     }
 }

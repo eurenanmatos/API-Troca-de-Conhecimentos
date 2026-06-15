@@ -1,25 +1,29 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Usuario {
     private Long id;
     private String nome;
+    private String email;
+    private String senha;
     private Habilidade habilidadeOferecida;
     private Habilidade habilidadeDesejada;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome) {
+    public Usuario(Long id, String nome, String email, String senha) {
         this.id = id;
         this.nome = nome;
+        this.email = email;
+        this.senha = senha;
     }
 
-    public Usuario(Long id, String nome, Habilidade habilidadeOferecida, Habilidade habilidadeDesejada) {
+    public Usuario(Long id, String nome, String email, String senha,
+                   Habilidade habilidadeOferecida, Habilidade habilidadeDesejada) {
         this.id = id;
         this.nome = nome;
+        this.email = email;
+        this.senha = senha;
         this.habilidadeOferecida = habilidadeOferecida;
         this.habilidadeDesejada = habilidadeDesejada;
     }
@@ -40,6 +44,22 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     public Habilidade getHabilidadeOferecida() {
         return habilidadeOferecida;
     }
@@ -58,6 +78,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{id=" + id + ", nome='" + nome + '\'' + ", oferece=" + (habilidadeOferecida != null ? habilidadeOferecida.getNome() : "-") + ", deseja=" + (habilidadeDesejada != null ? habilidadeDesejada.getNome() : "-") + '}';
+        return "Usuario{id=" + id + ", nome='" + nome + "', email='" + email + "'}";
     }
 }
